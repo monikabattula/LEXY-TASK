@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { documentsApi, sessionsApi } from '@/lib/api';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -12,7 +12,6 @@ interface Message {
 export default function ChatPage() {
   const { documentId } = useParams<{ documentId: string }>();
   const navigate = useNavigate();
-  const queryClient = useQueryClient();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [sessionId, setSessionId] = useState<string | null>(null);
